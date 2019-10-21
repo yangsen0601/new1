@@ -94,12 +94,16 @@
 
     <script src="../assets/vendors/jquery/jquery.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
+
+
+
+
     <script>
         $.ajax({
             type: 'get',
             url: '/posts/count',
             success: function(res) {
-                console.log(res);
+                // console.log(res);
                 $('#post').html('<strong>' + res.postCount + '</strong>篇文章(<strong>' + res.draftCount + '</strong>篇草稿）')
             }
         })
@@ -111,13 +115,24 @@
             }
         })
         $.ajax({
-            type: 'get',
-            url: '/comments/count',
-            success: function(res) {
-                $('#comment').html('<strong>' + res.commentCount + '</strong>条评论')
+                type: 'get',
+                url: '/comments/count',
+                success: function(res) {
+                    $('#comment').html('<strong>' + res.commentCount + '</strong>条评论')
 
+                }
+            })
+            // var userId = $(this).attr('data-id')
+
+        $.ajax({
+            type: 'get',
+            url: '/users/' + userId,
+            success: function(response) {
+                $('.avatar').attr('src', response.avatar)
+                $('.profile .name').html(response.nickName)
             }
         })
+        console.log(userId);
     </script>
     <script>
         NProgress.done()

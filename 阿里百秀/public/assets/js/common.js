@@ -1,4 +1,3 @@
-< script >
     $('#loginOut').on('click', function() {
         var isConfirm = confirm('是否要退出')
         if (isConfirm) {
@@ -11,5 +10,4 @@
                 }
             })
         }
-    }) <
-    /script>
+    })

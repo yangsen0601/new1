@@ -155,14 +155,15 @@
         }
         $('#pAdd').on('click', function() {
             $.ajax({
-                url: '/slides',
-                type: 'post',
-                data: $('form').serialize(),
-                success: function(res) {
-                    arr.push(res)
-                    render(arr)
-                }
-            })
+                    url: '/slides',
+                    type: 'post',
+                    data: $('form').serialize(),
+                    success: function(res) {
+                        arr.push(res)
+                        render(arr)
+                    }
+                })
+                // return false
         })
         $.ajax({
             url: '/slides',

@@ -69,7 +69,7 @@ if (id != -1) {
             $('#prev').attr('src', res.thumbnail).show()
             $('#img').val(res.thumbnail)
             $('#category > option').each(function(value, item) {
-                console.log(item);
+                // console.log(item);
                 if ($(item).val() == res.category) {
                     $(item).prop('selected', true)
                 }
@@ -80,17 +80,17 @@ if (id != -1) {
                     $(item).prop('selected', true)
                 }
             })
-            $('#created').val(res.createAt.substr(0, 16))
+            $('#created').val(res.createAt.substr(0, 10))
         }
     })
 }
-$('#pEdit').on('submit', function() {
-        var formData = $(this).serialize()
-            // alert(formData)
+$('#pEdit').on('click', function() {
+        // var formData = $(this).serialize()
+        // alert(formData)
         $.ajax({
             type: 'put',
             url: '/posts/' + id,
-            data: formData,
+            data: $('form').serialize(),
             success: function() {
                 location.href = '/admin/posts.html'
             }

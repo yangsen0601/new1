@@ -1,3 +1,11 @@
+var arr = []
+
+function render(data) {
+    var html = template('sTpl', {
+        res: data
+    })
+    $('tbody').html(html)
+}
 $('#userForm').on('submit', function() {
         var formData = $(this).serialize()
         $.ajax({
@@ -5,7 +13,8 @@ $('#userForm').on('submit', function() {
                 url: '/users',
                 data: formData,
                 success: function() {
-                    location.reload()
+                    // location.reload()
+                    render()
                 },
                 error: function() {
                     alert('添加失败')
@@ -61,7 +70,8 @@ $('#modifyBox').on('submit', '#modifyForm', function() {
         url: '/users/' + id,
         data: formData,
         success: function(res) {
-            location.reload()
+            // location.reload()
+            render()
         }
     })
 })
@@ -73,8 +83,8 @@ $('#userBox').on('click', '.delete', function() {
             type: 'delete',
             url: '/users/' + id,
             success: function() {
-                location.reload()
-                    // render()
+                // location.reload()
+                render()
             }
         })
     }
@@ -118,8 +128,8 @@ deleteMany.on('click', function() {
             type: 'delete',
             url: '/users/' + ids.join('-'),
             success: function() {
-                location.reload()
-                    // render()
+                // location.reload()
+                render()
             }
         })
     }

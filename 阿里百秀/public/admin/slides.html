@@ -52,7 +52,7 @@
                             <input id="link" class="form-control" name="link" type="text" placeholder="链接">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit" id="pAdd">添加</button>
+                            <button class="btn btn-primary" type="button" id="pAdd">添加</button>
                         </div>
                     </form>
                 </div>
@@ -160,7 +160,15 @@
                     data: $('form').serialize(),
                     success: function(res) {
                         arr.push(res)
+
                         render(arr)
+                            // render(res)
+
+
+                        // $('#image').val() = undefined
+                        // $('#text').val() = undefined
+                        // console.log($('#text').val());
+                        // console.log($('#image').val());
                     }
                 })
                 // return false
@@ -170,6 +178,7 @@
             type: 'get',
             success: function(res) {
                 arr = res
+
                 render(arr)
             }
         })
